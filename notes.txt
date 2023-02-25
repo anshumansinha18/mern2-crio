@@ -9,8 +9,9 @@ X.Y.Z:
 Eg: 4.18.2
 
 
+PACKAGE.JSON
+-------------
 
-PACKAGE.JSON:
 
 "dependencies": {
     "express": "^4.18.2"
@@ -20,3 +21,22 @@ PACKAGE.JSON:
 Here,
   ^: means 4.18.x(largest of x). On doing npm install only patches with get installed.
   ~: means 4.x.x(largest of x). On doing npm install minor versions will also get installed.
+   : If there is nothing, then it will give me exactly 4.18.2
+
+
+INSTALLING DEV DEPENDENCIES
+---------------------------
+
+command: npm install nodemon --save-dev
+
+Stored in package.json like this:
+"devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+
+PACKAGE-LOCK.JSON
+-----------------
+
+Suppose package.json contains some dependency version as ~4.17.1. Now if someone does npm install in future then 4.18.2 will get installed due to the ~ present and due to this some properties might break. So, the package-lock.json will contain the exact version of the dependencies which was installed while building the project. 
+
+command for installing package-lock.json version: 'npm ci' (not npm install)
