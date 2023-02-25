@@ -96,6 +96,33 @@
 //SESSION-1 ACTIVITY 5
 //-----------------------------------------------------
 
+// const http = require("http");
+// const PORT = 8081;
+// const json = require("./response.json");
+
+// http
+//   .createServer((request, response) => {
+//     if (request.url === "/") {
+//       response.write("<h1>Homepage</h1>");
+//       response.end();
+//     } else if (request.url === "/currencies") {
+//       response.writeHead(200, { "Content-type": "application/json" });
+//       response.write(JSON.stringify(json));
+//       response.end();
+//     } else {
+//       response.writeHead(400);
+//       response.end();
+//     }
+//   })
+//   .listen(PORT, () => {
+//     console.log("Listening on PORT", PORT);
+//   });
+
+//-------------------------------------------
+
+//SESSION 1 ACTIVITY 5 -Extending APIS
+//-------------------------------------------
+
 const http = require("http");
 const PORT = 8081;
 const json = require("./response.json");
@@ -105,17 +132,29 @@ http
     if (request.url === "/") {
       response.write("<h1>Homepage</h1>");
       response.end();
-    } else if (request.url === "/currencies") {
-      response.writeHead(200, { "Content-type": "application/json" });
-      response.write(JSON.stringify(json));
-      response.end();
-    } else {
-      response.writeHead(400);
+    } else if (request.url.startsWith("/currencies")) {
+      const splitUrl = request.url.split("/");
+      if (splitUrl.length > 2) {
+        const currency = splitUrl[2];
+        const obj = json.data.find((ele) => ele.id.toLowerCase() === currency);
+        if (obj) {
+          response.writeHead(200, { "Content-type": "application/json" });
+          response.write(JSON.stringify(obj));
+          response.end();
+        } else {
+          response.writeHead(400);
+          response.end();
+        }
+      } else {
+        response.writeHead(200, { "Content-type": "application/json" });
+        response.write(JSON.stringify(json));
+        response.end();
+      }
+    } else if (request.url === "/currencies/symbol") {
+      console.log("hi");
       response.end();
     }
   })
   .listen(PORT, () => {
     console.log("Listening on PORT", PORT);
   });
-
-  //-------------------------------------------
