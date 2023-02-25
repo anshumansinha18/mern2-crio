@@ -18,6 +18,28 @@
 //   });
 
 //SENDING JSON AS RESPONSE
+//------------------------
+
+// const http = require("http");
+// const PORT = 8081;
+
+// http
+//   .createServer((request, response) => {
+//     const serverInfo = {
+//       serverName: "Crio Server",
+//       version: "1.0.0",
+//       currentDate: new Date().toLocaleDateString(),
+//       currentTime: new Date().toLocaleTimeString(),
+//     };
+//     response.write(JSON.stringify(serverInfo));
+//     response.end();
+//   })
+//   .listen(PORT, () => {
+//     console.log("Listening on PORT", PORT);
+//   });
+//-------------------------------------------
+
+//ADDING HEADERS TO THE RESPONSE:
 const http = require("http");
 const PORT = 8081;
 
@@ -29,6 +51,7 @@ http
       currentDate: new Date().toLocaleDateString(),
       currentTime: new Date().toLocaleTimeString(),
     };
+    response.writeHead(200, { "Content-type": "application/json" });
     response.write(JSON.stringify(serverInfo));
     response.end();
   })
