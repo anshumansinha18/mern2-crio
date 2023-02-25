@@ -64,29 +64,58 @@
 //CHANGING RESPONSE BASED ON REQUEST RECEIVED: IDENTIFYING REQUEST
 //----------------------------------------------------------------
 
+// const http = require("http");
+// const PORT = 8081;
+
+// http
+//   .createServer((request, response) => {
+//     console.log(request.url); //prints params of url. not the endpoint
+//     //For http://localhost:8081/status, it prints /status
+
+//     if (request.url === "/status") {
+//       const serverInfo = {
+//         serverName: "Crio Server",
+//         version: "1.0.0",
+//         currentDate: new Date().toLocaleDateString(),
+//         currentTime: new Date().toLocaleTimeString(),
+//       };
+//       response.writeHead(200, { "Content-type": "application/json" });
+//       response.write(JSON.stringify(serverInfo));
+//       response.end();
+//     } else {
+//       response.write("<h1>Homepage</h1>");
+//       response.end();
+//     }
+//   })
+//   .listen(PORT, () => {
+//     console.log("Listening on PORT", PORT);
+//   });
+
+//-----------------------------------------------------
+
+//SESSION-1 ACTIVITY 5
+//-----------------------------------------------------
+
 const http = require("http");
 const PORT = 8081;
+const json = require("./response.json");
 
 http
   .createServer((request, response) => {
-    console.log(request.url); //prints params of url. not the endpoint
-    //For http://localhost:8081/status, it prints /status
-
-    if (request.url === "/status") {
-      const serverInfo = {
-        serverName: "Crio Server",
-        version: "1.0.0",
-        currentDate: new Date().toLocaleDateString(),
-        currentTime: new Date().toLocaleTimeString(),
-      };
+    if (request.url === "/") {
+      response.write("<h1>Homepage</h1>");
+      response.end();
+    } else if (request.url === "/currencies") {
       response.writeHead(200, { "Content-type": "application/json" });
-      response.write(JSON.stringify(serverInfo));
+      response.write(JSON.stringify(json));
       response.end();
     } else {
-      response.write("<h1>Homepage</h1>");
+      response.writeHead(400);
       response.end();
     }
   })
   .listen(PORT, () => {
     console.log("Listening on PORT", PORT);
   });
+
+  //-------------------------------------------
