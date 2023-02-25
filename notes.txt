@@ -1,0 +1,22 @@
+VERSION CONVENTION
+-------------------
+
+X.Y.Z: 
+   1. X - major version
+   2. Y - minor version
+   3. Z - patches(bug fixes)
+
+Eg: 4.18.2
+
+
+
+PACKAGE.JSON:
+
+"dependencies": {
+    "express": "^4.18.2"
+  }
+
+
+Here,
+  ^: means 4.18.x(largest of x). On doing npm install only patches with get installed.
+  ~: means 4.x.x(largest of x). On doing npm install minor versions will also get installed.
