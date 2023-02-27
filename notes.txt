@@ -40,3 +40,14 @@ PACKAGE-LOCK.JSON
 Suppose package.json contains some dependency version as ~4.17.1. Now if someone does npm install in future then 4.18.2 will get installed due to the ~ present and due to this some properties might break. So, the package-lock.json will contain the exact version of the dependencies which was installed while building the project. 
 
 command for installing package-lock.json version: 'npm ci' (not npm install)
+
+ADDING MULTIPLE RESPONSE.WRITE
+------------------------------
+
+We can have multiple response.write() before the response.end(); That'll also work.
+
+
+DIFFERENCE BETWEEN CURL REQUEST AND BROWSER REQUEST TO THE SERVER
+------------------------------------------------------------------
+
+Whenever we make a curl or postman request to the server, if the server is returning a string containing some h1 tag, then that will get returned as a string. However, if the browser is making the same request, then, the html tag h1 will get resolved and only the content present inside the h1 will get displayed on the broweser.
