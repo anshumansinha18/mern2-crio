@@ -51,3 +51,6 @@ DIFFERENCE BETWEEN CURL REQUEST AND BROWSER REQUEST TO THE SERVER
 ------------------------------------------------------------------
 
 Whenever we make a curl or postman request to the server, if the server is returning a string containing some h1 tag, then that will get returned as a string. However, if the browser is making the same request, then, the html tag h1 will get resolved and only the content present inside the h1 will get displayed on the broweser.
+
+
+QUIZ
