@@ -1,0 +1,34 @@
+API VS ROUTES
+-------------
+
+www.youtube.com - API
+www.youtube.com/watch - Route(/watch is route)
+
+
+EXPRESS
+-------
+
+Express is a nodejs framework which is built on top of http module of node to handle requests.
+
+
+SENDING HTML OR JSON RESPONSE USING EXPRESS:
+--------------------------------------------
+
+app.get('/', (res, req)=>{
+  res.send('<h1>Hello</h1>')           //FOR HTML
+})
+
+app.get('/', (res, req)=>{ 
+  res.json({name: 'Anshuman'});         //FOR JSON RESPONSE
+})
+
+-----------------------------------------------
+
+
+
+DIFFERNCE BETWEEN REQUEST.SENDSTATUS AND REQUEST.STATUS
+------------------------------------------------------------
+
+resposne.sendStatus(400): means that you cannot send a message after it using response.json() or res.send().
+
+response.status(400): means that you can send message after writing this statement.
