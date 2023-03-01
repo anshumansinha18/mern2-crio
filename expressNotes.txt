@@ -32,3 +32,29 @@ DIFFERNCE BETWEEN REQUEST.SENDSTATUS AND REQUEST.STATUS
 resposne.sendStatus(400): means that you cannot send a message after it using response.json() or res.send().
 
 response.status(400): means that you can send message after writing this statement.
+
+
+CONTROLLERS
+------------------------------------------
+
+* Consider a route: /currencies.
+* This route can have a lot of params or query params.
+* Rather that defining callback functions for all those params. We can create a single file and store all of our controllers inside it. 
+
+Naming Convention for the controller file: <route>.controller.js
+     Eg: currencies.controller.js
+
+Controllers: callback functions required for routes is called controller.
+Every route has a controller.
+
+
+IMPORTING CONTROLLERS FROM CONTROLLER.JSON
+-------------------------------------------
+
+Using import and export in the node js is not allowed. It'll give error. 
+Use require to import function or variables from different files.
+
+In order to export a function or folder, we have to use: 
+module.exports = getCurrencies;
+
+
