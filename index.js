@@ -86,19 +86,38 @@
 //EXPORTING MULTIPLE FUNCTIONS FROM CONTROLLER.JS
 //------------------------------------------------
 
-const {
-  getCurrencies,
-  getCurrenciesById,
-} = require("./controllers/currencies.controller");
+// const {
+//   getCurrencies,
+//   getCurrenciesById,
+// } = require("./controllers/currencies.controller");
+
+// const express = require("express");
+// const app = express();
+
+// const port = 8081;
+
+// app.get("/currencies", getCurrencies);
+// app.get("/currencies/:id", getCurrenciesById);
+
+// app.listen(port, () => {
+//   console.log(`Listening on port`, port);
+// });
+
+//ACTIVITY -SESSION-2
 
 const express = require("express");
+const {
+  getUsersData,
+  getUserById,
+  getUserBySearch,
+} = require("./controllers/users.controller");
 const app = express();
-
 const port = 8081;
 
-app.get("/currencies", getCurrencies);
-app.get("/currencies/:id", getCurrenciesById);
+app.get("/users", getUsersData);
+app.get("/users/search", getUserBySearch);
+app.get("/users/:uuid", getUserById);
 
 app.listen(port, () => {
-  console.log(`Listening on port`, port);
+  console.log("Listening on port", port);
 });

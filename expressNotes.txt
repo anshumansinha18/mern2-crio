@@ -58,3 +58,7 @@ In order to export a function or folder, we have to use:
 module.exports = getCurrencies;
 
 
+ORDER OF ROUTES MATTER:
+------------------------
+
+Order in which we write the routes are important. Whichever gets matched first is executed.
