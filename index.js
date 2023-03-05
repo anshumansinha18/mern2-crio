@@ -70,7 +70,26 @@
 //MODULE EXPORTS AND CONTROLLERS
 //--------------------------------
 
-const getCurrencies = require("./controllers/currencies.controller");
+// const getCurrencies = require("./controllers/currencies.controller");
+
+// const express = require("express");
+// const app = express();
+
+// const port = 8081;
+
+// app.get("/currencies", getCurrencies);
+
+// app.listen(port, () => {
+//   console.log(`Listening on port`, port);
+// });
+
+//EXPORTING MULTIPLE FUNCTIONS FROM CONTROLLER.JS
+//------------------------------------------------
+
+const {
+  getCurrencies,
+  getCurrenciesById,
+} = require("./controllers/currencies.controller");
 
 const express = require("express");
 const app = express();
@@ -78,6 +97,7 @@ const app = express();
 const port = 8081;
 
 app.get("/currencies", getCurrencies);
+app.get("/currencies/:id", getCurrenciesById);
 
 app.listen(port, () => {
   console.log(`Listening on port`, port);
