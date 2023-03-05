@@ -1,3 +1,5 @@
+const jsonData = require("../response.json");
+
 const getCurrencies = (req, res) => {
   const { min_value } = req.query;
   if (min_value) {
@@ -7,7 +9,5 @@ const getCurrencies = (req, res) => {
     res.json(jsonData);
   }
 };
-
-
 
 module.exports = getCurrencies;

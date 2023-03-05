@@ -43,14 +43,42 @@
 
 //REQUEST QUERY PARAMS:
 
-const { response, json } = require("express");
+// const { response, json } = require("express");
+// const express = require("express");
+// const app = express();
+// const port = 8081;
+// const jsonData = require("./response.json");
+
+// app.get("/currencies", (req, res) => {
+//   if (Object.keys(req.query).length) {
+//     const { min_value } = req.query;
+//     const filteredData = jsonData.data.filter(
+//       (ele) => Number(ele.min_size) >= Number(min_value)
+//     );
+//     res.json(filteredData);
+//     res.status(200).end();
+//   } else {
+//     res.json(jsonData);
+//     res.sendStatus(200);
+//   }
+// });
+
+// app.listen(port, () => {
+//   console.log("Listening on PORT", port);
+// });
+
+//MODULE EXPORTS AND CONTROLLERS
+//--------------------------------
+
+const getCurrencies = require("./controllers/currencies.controller");
+
 const express = require("express");
 const app = express();
-const port = 8081;
-const jsonData = require("./response.json");
 
-app.get("/currencies", );
+const port = 8081;
+
+app.get("/currencies", getCurrencies);
 
 app.listen(port, () => {
-  console.log("Listening on PORT", port);
+  console.log(`Listening on port`, port);
 });
