@@ -105,19 +105,21 @@
 
 //ACTIVITY -SESSION-2
 
-const express = require("express");
-const {
-  getUsersData,
-  getUserById,
-  getUserBySearch,
-} = require("./controllers/users.controller");
-const app = express();
-const port = 8081;
+// const express = require("express");
+// const {
+//   getUsersData,
+//   getUserById,
+//   getUserBySearch,
+// } = require("./controllers/users.controller");
+// const app = express();
+// const port = 8081;
 
-app.get("/users", getUsersData);
-app.get("/users/search", getUserBySearch);
-app.get("/users/:uuid", getUserById);
+// app.get("/users", getUsersData);
+// app.get("/users/search", getUserBySearch);
+// app.get("/users/:uuid", getUserById);
 
-app.listen(port, () => {
-  console.log("Listening on port", port);
-});
+// app.listen(port, () => {
+//   console.log("Listening on port", port);
+// });
+
+
