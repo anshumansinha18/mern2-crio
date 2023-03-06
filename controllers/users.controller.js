@@ -25,15 +25,33 @@ const getUserById = (req, res) => {
 
 const getUserBySearch = (req, res) => {
   const { gender, age } = req.query;
-  if (gender && age) {
-    const resData = jsonData.data.find(
-      (ele) => ele.gender === gender && ele.dob.age === Number(age)
-    );
-    res.json(resData);
-    res.status(200);
-  } else {
-    res.json({ message: "Invalid query" });
-    res.status(404);
+  if (!gender && !age) {
+    res.status(422).json({ message: "Please enter gender or age or both" });
+  } else if (gender && !age) {
+    if (!Number(gender)) {
+      //validate gender
+      const genderValidationArray = ["male", "female"];
+      if (!genderValidationArray.includes(gender)) {
+        res.json({ message: "Gender can be male or female only" }).status(422);
+      }
+      const resData = jsonData.data.filter((ele) => ele.gender === gender);
+      res.json(resData).status(200);
+    } else {
+      res.json({ message: "Invalid type of gender" }).status(422);
+    }
+  } else if (age && !gender) {
+    if (Number(age) === 0 || Number(age)) {
+      if (Number(age) < 0 || Number(age) > 100) {
+        res.json({ message: "Age out of bounds" }).status(422);
+      }
+      console.log(Number(age));
+      const resData = jsonData.data.filter(
+        (ele) => ele.dob.age === Number(age)
+      );
+      res.send(resData).status(200);
+    } else {
+      res.json({ message: "Age parameter should be a number" });
+    }
   }
 };
 
