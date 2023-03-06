@@ -1,12 +1,36 @@
 const jsonData = require("../response.json");
+const Joi = require("joi");
+
+const PASSWORD = "LetMeIn";
+
+const schema = Joi.object().keys({
+  min_value: Joi.number().min(0),
+});
+
+const validateData = (input) => {
+  const result = schema.validate(input);
+  return result.error;
+};
 
 const getCurrencies = (req, res) => {
-  const { min_value } = req.query;
-  if (min_value) {
-    res.json(jsonData.data.filter((ele) => Number(ele.min_size) >= min_value));
-    res.status(200);
+  const { authorization } = req.headers;
+  console.log(authorization);
+  if (authorization && authorization === PASSWORD) {
+    const { min_value } = req.query;
+    const error = validateData({ min_value });
+    if (error) {
+      return res.send(error).status(404);
+    }
+    if (min_value) {
+      res.json(
+        jsonData.data.filter((ele) => Number(ele.min_size) >= min_value)
+      );
+      res.status(200);
+    } else {
+      res.json(jsonData);
+    }
   } else {
-    res.json(jsonData);
+    res.sendStatus(403);
   }
 };
 

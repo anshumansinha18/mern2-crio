@@ -71,7 +71,6 @@ const getUsersData = (req, res) => {
 };
 
 const Joi = require("joi");
-const { json } = require("express");
 const schema = Joi.object().keys({
   age: Joi.number().integer().min(0).max(100),
   gender: Joi.string().valid("male", "female"),
