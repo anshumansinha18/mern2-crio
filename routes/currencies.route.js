@@ -5,8 +5,7 @@ const {
   getCurrenciesById,
 } = require("../controllers/currencies.controller");
 
-router.get("/currencies", getCurrencies);
-router.get("/currencies/:id", getCurrenciesById);
-
+router.get("/", getCurrencies);
+router.get("/:id", getCurrenciesById);
 
 module.exports = router;
