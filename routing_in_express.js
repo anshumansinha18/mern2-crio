@@ -9,6 +9,10 @@ const port = 8081;
 const currenciesRoute = require("./routes/currencies.route");
 const usersRoute = require("./routes/users.route");
 
+const { verifyAuth } = require("./middleware/verifyAuth");
+
+app.use(verifyAuth);
+
 app.use("/currencies", currenciesRoute);
 app.use("/users", usersRoute);
 

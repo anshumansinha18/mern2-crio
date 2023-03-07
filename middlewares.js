@@ -8,7 +8,7 @@ function middleware(req, res, next) {
   next(); //Remove next() to see what happens. (Next middleware will not be executed at all which is controller for /create-user).
 }
 
-app.use(middleware);
+app.use(middleware);  //THIS IS LIKE A GLOBAL MIDDLEWARE. IF REQUEST COMES FROM ANY URL TO THIS SERVER, THEN THIS WILL GET CALLED.
 
 app.get("/create-user", (req, res) => {
   res.send(req.something);

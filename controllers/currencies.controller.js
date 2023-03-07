@@ -12,17 +12,17 @@ const validateData = (input) => {
   return result.error;
 };
 
-const verifyPassword = (req) => {
-  const { authorization } = req.headers;
-  if (authorization && authorization === PASSWORD) {
-    return true;
-  } else return false;
-};
+// const verifyPassword = (req) => {
+//   const { authorization } = req.headers;
+//   if (authorization && authorization === PASSWORD) {
+//     return true;
+//   } else return false;
+// };
 
 const getCurrencies = (req, res) => {
-  if (!verifyPassword(req)) {
-    return res.sendStatus(403);
-  }
+  // if (!verifyPassword(req)) {
+  //   return res.sendStatus(403);
+  // }
   const { min_value } = req.query;
   const error = validateData({ min_value });
   if (error) {

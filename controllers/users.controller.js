@@ -70,16 +70,7 @@ const getUsersData = (req, res) => {
   res.status(200);
 };
 
-const Joi = require("joi");
-const schema = Joi.object().keys({
-  age: Joi.number().integer().min(0).max(100),
-  gender: Joi.string().valid("male", "female"),
-});
 
-const checkError = (input) => {
-  const result = schema.validate(input);
-  return result.error;
-};
 const getUserById = (req, res) => {
   const { uuid } = req.params;
   if (uuid) {
@@ -100,10 +91,10 @@ const getUserById = (req, res) => {
 const getUserBySearch = (req, res) => {
   const { gender, age } = req.query;
 
-  const error = checkError({ gender, age });
-  if (error) {
-    return res.status(422).json(error);
-  }
+  // const error = checkError({ gender, age });
+  // if (error) {
+  //   return res.status(422).json(error);
+  // }
 
   if (gender && age) {
     const resData = jsonData.data.filter(
