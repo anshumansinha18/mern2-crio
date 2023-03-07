@@ -1,5 +1,5 @@
 //ROUTES
-
+require("dotenv").config();
 const express = require("express");
 const { getCurrenciesById } = require("./controllers/currencies.controller");
 const app = express();

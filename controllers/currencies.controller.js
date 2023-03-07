@@ -1,7 +1,7 @@
 const jsonData = require("../response.json");
 const Joi = require("joi");
 
-const PASSWORD = "LetMeIn";
+const PASSWORD = process.env.ROUTE_PASSWORD;
 
 const schema = Joi.object().keys({
   min_value: Joi.number().min(0),
