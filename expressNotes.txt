@@ -86,3 +86,17 @@ CODE MODULARITY:
 ------------------
 
 Every function needs to have only one task.
+If one function is fetching the data from the server and also doing Authentication, then code modularity is voilated. 
+That's where middleware comes in handy.
+
+MIDDLEWARES:
+--------------
+
+Middlewares are something which runs between the request is sent to the server and response is sent from the server. 
+
+app.get("/", (req, res)=>{
+  console.log("Something");
+  res.send('<h1>HI</h2>')
+})
+
+In this case, (req, res) and console.log("Something") is a middleware because it happens between request received and response being sent.
