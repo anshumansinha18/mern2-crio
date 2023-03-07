@@ -81,3 +81,8 @@ Authorization: If the user has permission to perform a task or not.
 
 Authentication comes first then authorization happens after it.
 
+
+CODE MODULARITY:
+------------------
+
+Every function needs to have only one task.
