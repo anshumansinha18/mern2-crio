@@ -71,3 +71,13 @@ When using .env file, use DOTENV package.
 Install: npm install dotenv --save-dev
 
 We need to require dotenv at the top of the starting point of our server i.e at the top of index.js
+
+
+AUTHORIZATION VS AUTHENTICATION:
+----------------------------------
+
+Authentication: If the user is who they say they are.
+Authorization: If the user has permission to perform a task or not.
+
+Authentication comes first then authorization happens after it.
+
