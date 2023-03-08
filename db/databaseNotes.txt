@@ -1,0 +1,80 @@
+INTRODUCTION:
+-------------------
+
+One Mongo Server --->  Multiple Databases
+One Database ------> Multiple collections
+One Collection -----> Multiple documents
+
+
+USE DB:
+--------
+
+use test: this will select the database named test.
+
+DISPLAY COLLECTIONS INSIDE DATABASE:
+------------------------------------
+
+command: db.getCollectionNames()
+
+This will display all the collection names present in the selected database.
+
+
+CREATE A NEW COLLECTION IN DATABASE:
+-------------------------------------
+
+command: db.createCollections("nameofthecollection");
+
+Eg: db.createCollections("blogs").
+
+
+INSERTING DOCUMENTS INSIDE COLLECTIONS IN MONGODB:
+-----------------------------------
+
+command: db.nameofthecollection.insert({key1: value1, key2:value2})
+
+Eg: db.blogs.insert({publishedAt: null, author: [], content:""})
+
+
+FIND DOCUMENTS IN DATABASE:
+---------------------------
+
+command 1: db.nameofthecollection.find()
+command 2: db.nameofthecollection.find({})
+command 3: db.nameofthecollection.find({key:value})
+command 4: db.student.find({key:{nestedKey1: value1, nestedKey2: value2}})
+
+Eg: db.blogs.find({}).pretty();
+
+
+PROBLEM WITH MONGODB:
+---------------------
+
+Suppose while storing data, we do something like this:
+  document1:
+   {
+    author: []
+    title: ""
+   }
+
+  document2:
+   {
+    author: ""
+    title: []
+   }
+
+Frontend logic: 
+  author.map((i)=><h1>i</h2)
+
+Now this frontend logic will give error because at one time the author is array and another time it is string. 
+
+In order to fix the issue, mongoose arrived. 
+
+
+MONGOOSE:
+----------
+
+Mongoose is a Nodejs based Object Data Modelling(ODM) for MongoDb.
+
+It helps define the relationship between data, provides schema validation
+
+Mongoose help us define schema and provides an interface to perform CRUD operation.
