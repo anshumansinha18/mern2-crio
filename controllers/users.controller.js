@@ -70,7 +70,6 @@ const getUsersData = (req, res) => {
   res.status(200);
 };
 
-
 const getUserById = (req, res) => {
   const { uuid } = req.params;
   if (uuid) {

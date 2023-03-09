@@ -45,6 +45,17 @@ command 4: db.student.find({key:{nestedKey1: value1, nestedKey2: value2}})
 
 Eg: db.blogs.find({}).pretty();
 
+FIND NUMBER OF DOCUMENTS IN DATABASE:
+-------------------------------------
+
+Eg: db.blogs.find({}).count()
+
+
+LIMIT THE NUMBER OF DOCUMENTS TO BE DISPLATED TO 1:
+---------------------------------------------------
+
+Eg: db.blogs.find({}).limit(1).pretty()
+
 
 PROBLEM WITH MONGODB:
 ---------------------
@@ -78,3 +89,5 @@ Mongoose is a Nodejs based Object Data Modelling(ODM) for MongoDb.
 It helps define the relationship between data, provides schema validation
 
 Mongoose help us define schema and provides an interface to perform CRUD operation.
+
+
