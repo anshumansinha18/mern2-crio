@@ -53,12 +53,16 @@ const searchBlogs = async (request, response) => {
   console.log(author);
   try {
     const data = await Blogs.find({
-      title: title,
-      author: {
-        $elemMatch: {
-          email: author,
+      $or: [
+        { title: title },
+        {
+          author: {
+            $elemMatch: {
+              email: author,
+            },
+          },
         },
-      },
+      ],
     });
     response.json(data);
   } catch (err) {

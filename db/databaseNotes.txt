@@ -115,4 +115,22 @@ const data = await Blogs.find({
 
 Here, author is an array. So we have to use $elemMatch to find the match.
 
+FINDING DOCUMENTS USING OR CONDITION:
+--------------------------------------
+
+ const data = await Blogs.find({
+      $or: [
+        { title: "John" },
+        {
+          author: {
+            $elemMatch: {
+              email: "a@gmail.com",
+            },
+          },
+        },
+      ],
+    });
+
+'or' takes an array. 
+It checks for document with either title = John or email: a@gmail.com
 
