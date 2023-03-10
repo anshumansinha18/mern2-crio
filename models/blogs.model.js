@@ -7,6 +7,6 @@ const blogSchema = mongoose.Schema({
   publishedAt: Date,
 });
 
-const blogsModel = mongoose.Model("Blogs", blogSchema);
+const blogsModel = mongoose.model("Blogs", blogSchema);
 
 module.exports = blogsModel;
