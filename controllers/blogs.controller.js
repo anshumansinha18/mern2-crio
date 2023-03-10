@@ -1,24 +1,36 @@
 const { request } = require("express");
 const { findOneAndUpdate } = require("../models/blogs.model");
 const Blogs = require("../models/blogs.model");
+const {
+  findAllBlogs,
+  createBlogDocument,
+} = require("../services/blog.service");
 
 const createBlog = async (request, response) => {
-  try {
-    const body = request.body;
-    console.log(body);
-    const newDocument = new Blogs(body); //Creates the new document but doesn't save it.
+  // try {
+  //   const body = request.body;
+  //   console.log(body);
+  //   const newDocument = new Blogs(body); //Creates the new document but doesn't save it.
 
-    await newDocument.save(); //Saves the document in mongodb database and it is an asynchronous call
-    console.log(newDocument);
+  //   await newDocument.save(); //Saves the document in mongodb database and it is an asynchronous call
+  //   console.log(newDocument);
+  //   response.sendStatus(200);
+  // } catch (err) {
+  //   console.log(err);
+  //   response.status(500).json(err);
+  // }
+
+  try {
+    await createBlogDocument(request.body);
     response.sendStatus(200);
   } catch (err) {
     console.log(err);
-    response.status(500).json(err);
+    response.json(err).status(500);
   }
 };
 
 const getAllBlogs = async (request, response) => {
-  const data = await Blogs.find({});
+  const data = await findAllBlogs();
   response.json(data);
 };
 
