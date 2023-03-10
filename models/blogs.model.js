@@ -1,22 +1,27 @@
 const mongoose = require("mongoose");
 
-const authorSchema = mongoose.Schema({
-  name: {
-    type: String,
-    maxLenght: 25,
+const authorSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      maxLenght: 25,
+    },
+    twitterHandle: {
+      type: String,
+    },
+    email: {
+      type: String,
+      required: true,
+      maxLenght: 50,
+    },
+    image: {
+      type: String,
+    },
   },
-  twitterHandle: {
-    type: String,
-  },
-  email: {
-    type: String,
-    required: true,
-    maxLenght: 50,
-  },
-  image: {
-    type: String,
-  },
-});
+  {
+    _id: false,
+  }
+);
 
 const blogSchema = mongoose.Schema(
   {
