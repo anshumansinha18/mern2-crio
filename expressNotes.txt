@@ -100,3 +100,11 @@ app.get("/", (req, res)=>{
 })
 
 In this case, (req, res) and console.log("Something") is a middleware because it happens between request received and response being sent.
+
+
+APP.USE(EXPRESS.JSON()):
+-------------------------
+
+The reason why we use app.use(express.json()) because express doesn't know how to handle post request. So, by writing this, we tell express that there is going to be a post request in our application and through the post request we will be receiving a body whose format will be json.
+
+Use it at the top of index.js file.
