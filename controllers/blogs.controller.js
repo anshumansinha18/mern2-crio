@@ -13,7 +13,7 @@ const createBlog = async (request, response) => {
     response.sendStatus(200);
   } catch (err) {
     console.log(err);
-    response.sendStatus(500);
+    response.status(500).json(err);
   }
 };
 

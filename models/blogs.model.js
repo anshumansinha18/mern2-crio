@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 const authorSchema = mongoose.Schema(
   {
@@ -17,17 +18,30 @@ const authorSchema = mongoose.Schema(
         //the name of the function should always be validate
         //Logic for validation
         //function should return true or false
-        const re =
-          /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if (re.test(newValue)) {
-          return true;
-        } else {
-          return false;
-        }
+
+        //VALIDATION USING REGEX
+        //------------------------
+        // const re =
+        //   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        // if (re.test(newValue)) {
+        //   return true;
+        // } else {
+        //   return false;
+        // }
+
+        //VALIDATION USING VALIDATOR NPM PACKAGE
+        //-------------------------------------
+
+        if (validator.isEmail(newValue)) return true;
+        else return false;
       },
     },
     image: {
       type: String,
+      validate: (newValue) => {
+        if (validator.isURL(newValue)) return true;
+        else return false;
+      },
     },
   },
   {
