@@ -91,3 +91,14 @@ It helps define the relationship between data, provides schema validation
 Mongoose help us define schema and provides an interface to perform CRUD operation.
 
 
+VERSION AND ID IN MONGODB:
+--------------------------
+
+Whenver we store our data in mongodb database, mongodb creates two extra fields: 
+__v:
+_id:
+
+__v: denotes version
+_id: unique for every document
+
+
