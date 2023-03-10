@@ -17,6 +17,12 @@ const createBlog = async (request, response) => {
   }
 };
 
+const getAllBlogs = async (request, response) => {
+  const data = await Blogs.find({});
+  response.json(data);
+};
+
 module.exports = {
+  getAllBlogs,
   createBlog,
 };
