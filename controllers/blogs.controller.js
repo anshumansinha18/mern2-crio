@@ -54,7 +54,7 @@ const searchBlogs = async (request, response) => {
   try {
     const data = await Blogs.find({
       $or: [
-        { title: title },
+        { title: { $regex: title } },
         {
           author: {
             $elemMatch: {
