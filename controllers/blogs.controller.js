@@ -47,9 +47,28 @@ const updateBlogWithId = async (request, response) => {
     response.json({ message: "Could Not find the data" }).status(500);
   }
 };
+
+const searchBlogs = async (request, response) => {
+  const { title, author } = request.query;
+  console.log(author);
+  try {
+    const data = await Blogs.find({
+      title: title,
+      author: {
+        $elemMatch: {
+          email: author,
+        },
+      },
+    });
+    response.json(data);
+  } catch (err) {
+    response.status(500).json(err);
+  }
+};
 module.exports = {
   getAllBlogs,
   createBlog,
   deleteBlogWithId,
   updateBlogWithId,
+  searchBlogs,
 };

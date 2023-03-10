@@ -101,4 +101,18 @@ _id:
 __v: denotes version
 _id: unique for every document
 
+FINDING A MATCH IN AN ARRAY IN MONGODB:
+--------------------------------------
+
+const data = await Blogs.find({
+      title: title,
+      author: {
+        $elemMatch: {
+          email: 'abcd@gmail.com',
+        },
+      },
+    });
+
+Here, author is an array. So we have to use $elemMatch to find the match.
+
 
